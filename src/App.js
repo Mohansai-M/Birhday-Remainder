@@ -1,24 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Taskbar  from './Components/Taskbar';
+import { useState } from 'react';
+import PersonCard from './Components/PersonCard';
 function App() {
+
+   var Months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",  "Oct", "Nov", "Dec", ];
+
+  const[BColor,setBColor] = useState("white")
+    const Toggler =() =>
+    {
+      if(BColor === "Black")
+      {
+        setBColor("white")
+      }
+      if(BColor === "white")
+      {
+        setBColor("Black")
+      }
+    }
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <body className="App" style={{ backgroundColor: BColor }}>
+      <Taskbar />
+      <label className="switch">
+        <input type="checkbox" onClick={Toggler} />
+        <span className="slider round"></span>
+      </label>
+      <div className="container-fluid ContentItems row g-0">
+        <div className="Main-Item col g-0">
+          <PersonCard monthpass={Months} />
+        </div>
+      </div>
+    </body>
   );
 }
 
