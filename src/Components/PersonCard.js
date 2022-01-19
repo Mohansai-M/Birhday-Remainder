@@ -37,14 +37,19 @@ const Persons = [
 
 const [person, setperson] = useState(Persons);
 
+
+
 const DeleteHandler = (id) =>
 {
     setperson((prevperson) => prevperson.filter((person) => person.id !== id));
 }
 
+console.log(props.Cardcolour)
+
+
 
 return (
-  <div className="Person_Card">
+  <div className="Person_Card" style={{ color: props.FontColor,backgroundColor:props.Cardcolour}}>
     {person.map((person) => (
       <div className="container-fluid  person-container">
         <div className="row">
